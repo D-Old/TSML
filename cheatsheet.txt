@@ -1,0 +1,17 @@
+\textcite[701-710]{abdu2011}
+\parencite[712-740]{abdu2011}. \\
+Furthermore this \parencite[see][]{abdu2011}.
+And later the same \parencite[see][699-701]{abdu2011}. \\
+\newpage
+
+\citeauthor{abdu2011} show that this is just filler text in \cite*{abdu2011}.
+
+Here comes a footnote\footnote{I will cite for this purpose a guy. \parencite{abdu2011}}
+
+
+Since the beginning of the century, transparency and accountability initiatives (TAI) have emerged quickly in countries with extractive industries  \parencite{meji2013}.\footnote{The terms transparency and accountability will be explained in detail in Section~\ref{sec:transparency} and Section~\ref{sec:accountability}, respectively.}
+
+
+\subsection{The Nomenclature}
+This is a Figure (Fig.).\nomenclature{Fig.}{Figure} \\
+Here is A of i. \nomenclature{$A_i$}{Area of the $i^{th}$ component} \\

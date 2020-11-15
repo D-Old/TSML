@@ -1,0 +1,66 @@
+% BibLaTeX options file 
+% This file specifies options for BibLaTeX, tailored for the needs of our chair. 
+% Usually, you do not need to change anything here. 
+% Put it in the folder of your main .tex-file and name it biblatex-options.tex 
+ 
+\ExecuteBibliographyOptions{% 
+ bibencoding=utf8, % if .bib-file in utf8 (unicode) 
+ %bibencoding=ascii % if .bib-file in ASCII (avoid this if possible) 
+ bibwarn=true, % create compiler warnings if the -bib-file is faulty 
+ %firstinits=true, % Shortens first names to initials 
+doi=true, % Do not show doi numbers
+ isbn=false, % Do not show ISBN numbers 
+ eprint=false, % Do not show eprint numbers 
+url=false, % Show URLs
+ maxcitenames=3, % If there are more than 3 authors, the citation uses the principal author and 'et al.'
+ maxbibnames=99, % displays all authors in the reference list
+ useprefix=true, %corrects names with prefixes like van Helsing
+urldate=comp, %Prints URL visit dates as e.g. May 12, 2014
+mergedate=basic,
+backref=false,
+clearlang=true % biblatex will clear the language field of all entries whose language matches the babel language of the document in order to omit redundant language specifications
+%citetracker=true,
+ } 
+
+% Sorting of the names 
+\DeclareNameAlias{sortname}{last-first/first-last} 
+% 
+ 
+%
+% Separate pagenumbers by colon, instead of pp. in the bibliography
+\DeclareFieldFormat[article]{pages}{#1}%
+\renewcommand*{\bibpagespunct}{\addcolon\space} 
+ 
+% Some customisations 
+% 
+%Use a colon to separate page numbers from the cited work. 
+\renewcommand*{\postnotedelim}{\addcolon\space} 
+\DeclareFieldFormat{postnote}{#1} 
+\DeclareFieldFormat{multipostnote}{#1} 
+% 
+% Enclosed the issue number by parentheses and remove the dot. 
+\renewbibmacro*{volume+number+eid}{% 
+ \printfield{volume}% 
+% \setunit*{\adddot}% DELETED 
+ \setunit*{\addnbspace}% NEW (optional); there's also \addnbthinspace 
+ \printfield{number}% 
+ \setunit{\addcomma\space}% 
+ \printfield{eid}} 
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}} 
+% 
+% Remove "In:" from articles. 
+\renewbibmacro{in:}{% 
+ \ifentrytype{article}{}{% 
+ \printtext{\bibstring{in}\intitlepunct}}} 
+%
+
+% Prints all authors the first time mentioned
+%\AtEveryCitekey{\ifciteseen{}{\defcounter{maxnames}{99}% Note that the test \ifciteseen{<true>}{<false>} needs citation trackers (citetracker=true) enabled. By default authoryear doesn't use citation tracking.
+%\DeclareNameAlias{labelname}{first-last}% prints full name of authors 
+%}}
+
+%instead of clearlang=true
+%% Suppress Language Output in References
+%\DeclareSourcemap{
+%  \maps[datatype=bibtex, overwrite]{
+%    \map{\step[fieldset=language, null]}}}
